@@ -7,7 +7,6 @@
 :root[data-theme="dark"]{--ink:#f1e8d6;--sub:#b3a88f;--card:#1f2b3c;--card2:#273548;--line:#38465a;--teal:#2a8f9b;--gold:#e0a040;--sky1:#27344a;--sky2:#3a3f4a;--ok:#4cc16f;--bad:#ef7b6e;--page:#141d2b}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;margin:0}body{background:#cdb68a;font:16px/1.4 system-ui,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);display:flex;justify-content:center}
-@media(max-width:499px){html{background:linear-gradient(var(--sky1) 50%,var(--card) 50%)}body{background:transparent}}
 button,input,select,textarea{font:inherit;color:inherit}button{cursor:pointer}
 .app{position:relative;width:100%;max-width:440px;height:100%;max-height:900px;overflow:hidden;background:linear-gradient(var(--sky1),var(--sky2) 30%,#1d4e7a 34%,#d3a05f 70%);align-self:center}
 @media(min-width:500px){.app{border-radius:28px;box-shadow:0 20px 60px rgba(0,0,0,.35);height:min(100%,860px)}}
@@ -20,11 +19,10 @@ h1.t{font-size:36px;margin:10px 0 8px;font-weight:800;line-height:1.1}
 .chips{display:flex;gap:8px;padding-bottom:10px}.chip{border:0;background:var(--card);border-radius:999px;padding:9px 16px;font-weight:600;display:flex;gap:6px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,.12)}.chip.on{background:var(--teal);color:#fff}
 #res{position:absolute;left:16px;right:16px;top:132px;background:var(--card2);border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.3);z-index:9;display:none;overflow:hidden}
 #res div{padding:12px 16px;border-bottom:1px solid var(--line);cursor:pointer}
-.mapw{position:absolute;left:0;right:0;top:218px;bottom:74px;overflow:hidden;z-index:1;background:#f8ecdd;-webkit-mask-image:linear-gradient(transparent,#000 57px);mask-image:linear-gradient(transparent,#000 57px)}
-.layer{position:absolute;left:0;top:0;width:100%;aspect-ratio:941/865;transition:transform .35s;transform-origin:50% 50%}.layer img{width:100%;height:100%;display:block}
-.layer>img{position:relative;-webkit-mask-image:linear-gradient(to bottom,#000 94%,transparent);mask-image:linear-gradient(to bottom,#000 94%,transparent)}
-.vap{position:absolute;top:0;bottom:0;width:16%;pointer-events:none}.vap.l{left:-8%}.vap.r{right:-8%}.vap{background:linear-gradient(90deg,transparent,rgba(226,190,130,.42) 50%,transparent)}
-.island{position:fixed;left:0;right:0;top:0;height:env(safe-area-inset-top,0px);background:var(--sky1);z-index:100;pointer-events:none}
+.mapw{position:absolute;left:0;right:0;top:218px;aspect-ratio:941/865;overflow:hidden;z-index:1;-webkit-mask-image:linear-gradient(transparent,#000 14%,#000 90%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 90%,transparent)}
+.layer{position:absolute;inset:0;transition:transform .35s;transform-origin:50% 50%}.layer img{width:100%;height:100%;display:block}
+.ext{position:absolute;inset:0;pointer-events:none;filter:blur(14px) saturate(.92)}.layer .ext img{position:absolute;width:100%;height:100%}
+.layer>img{-webkit-mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent),linear-gradient(to bottom,transparent,#000 4%,#000 96%,transparent);mask-composite:intersect}
 .zm button:disabled{opacity:.32;cursor:not-allowed}
 .hs{position:absolute;border-radius:14px;cursor:pointer;border:2px solid transparent;transition:.2s}
 .hs.sel{border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.35),0 0 24px rgba(255,255,255,.7);animation:p 1.6s infinite}.hs.dim{opacity:.0}
@@ -51,7 +49,7 @@ input.f,textarea,select.f{width:100%;padding:10px 12px;border:1px solid var(--li
 #chat{display:flex;flex-direction:column;gap:8px;min-height:240px;max-height:46vh;overflow:auto;padding:4px 0}
 .m{max-width:90%;padding:10px 12px;border-radius:14px}.u{align-self:flex-end;background:var(--teal);color:#fff}.b{align-self:flex-start;background:var(--card2);border:1px solid var(--line)}
 ol.it{padding-left:20px;margin:6px 0}.toast{position:absolute;left:50%;top:210px;transform:translateX(-50%);background:var(--ink);color:var(--card);padding:8px 14px;border-radius:999px;z-index:30;font-size:14px;display:none}
-</style></head><body><div class="island"></div><div class="app" id="app">
+</style></head><body><div class="app" id="app">
 <div class="top" id="top"><div class="brand"><svg width="58" height="40" viewBox="0 0 58 40"><polygon points="4,32 24,4 44,32" fill="#a8741f"/><polygon points="24,4 44,32 30,32" fill="#c99a3d"/><polygon points="40,32 50,16 58,32" fill="#d9ae55"/><path d="M2 36q14-6 28-1t26-3" stroke="#1f5a6b" stroke-width="3" fill="none" stroke-linecap="round"/></svg><b>PHARO MAP</b><button class="circ" id="prof" aria-label="Profile"><svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4.5"/><path d="M3.5 21c.8-5 4-7 8.5-7s7.700 2 8.500 7z"/></svg></button></div>
 <div class="search"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.200"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><input id="q" placeholder="Find a landmark…" autocomplete="off"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h10M17 7h4M3 17h4M11 17h10"/><circle cx="15" cy="7" r="2"/><circle cx="9" cy="17" r="2"/></svg></div>
 <h1 class="t">Explore Egypt</h1><div class="chips" id="chips"></div></div><div id="res"></div>
@@ -77,7 +75,7 @@ function setNav(){$('#nav').innerHTML=[['map','Map'],['saved','Saved'],['ai','AI
 function chips(){$('#chips').innerHTML=[['all','All','<path d="M12 4l9 15H3z"/>'],['a','Ancient sites','<path d="M12 4l9 15H3z"/>'],['m','Museums','<path d="M3 9l9-5 9 5M5 10v8M10 10v8M14 10v8M19 10v8M3 20h18"/>']].map(([k,t,p])=>`<button class="chip ${flt===k?'on':''}" data-f="${k}">${k!=='all'?`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">${p}</svg>`:''}${t}</button>`).join('')}
 function drawMap(){const lay=$('#layer');lay.querySelectorAll('.hs,.pin').forEach(e=>e.remove());
 L.forEach(l=>{const h=document.createElement('div');h.className='hs'+(l.id===sel?' sel':'')+(flt!=='all'&&l.cat===flt?' hl':'');h.dataset.id=l.id;h.style.cssText=`left:${l.box[0]}%;top:${l.box[1]}%;width:${l.box[2]}%;height:${l.box[3]}%`;h.title=l.n;lay.append(h)});
-const p=document.createElement('div');p.className='pin';p.textContent='Sphinx';p.style.cssText='left:37.7%;top:28.5%';lay.append(p);zoom=Math.max(zoom,zmin());$('#zi').disabled=zoom>=1.7-1e-6;$('#zo').disabled=zoom<=zmin()+1e-6;lay.style.transform=`translateY(${zoom<1?-(1-zoom)*50:0}%) scale(${zoom})`}
+const p=document.createElement('div');p.className='pin';p.textContent='Sphinx';p.style.cssText='left:37.7%;top:28.5%';lay.append(p);$('#zi').disabled=zoom>=1.7-1e-6;$('#zo').disabled=zoom<=.5+1e-6;lay.style.transform=`translateY(${zoom<1?-(1-zoom)*20:0}%) scale(${zoom})`}
 function card(){const l=L.find(x=>x.id===sel),o=isOpen(l);$('#card').innerHTML=`<img src="${IMG[l.id]}" alt=""><div style="flex:1;min-width:0"><h3>${l.n}</h3><div class="meta"><span class="star">★</span> ${l.r} (${l.cnt} reviews)</div><div class="meta"><span class="${o?'ok':'bad'}">${o?'Open':'Closed'}</span> · ${hm(l.o)} – ${hm(l.c)}</div></div><button class="go" data-d="${l.id}">Details ›</button>`}
 function pick(id){sel=id;drawMap();card()}
 function show(){const s=$('#scr'),m=tab==='map';$('#dock').style.display=m&&!det?'flex':'none';$('#top').style.display=m&&!det?'block':'none';$('#mapw').style.display=m&&!det?'block':'none';
@@ -104,15 +102,13 @@ for(const p of perms(ids)){let at=s,pos=o,out=[],skip=[];for(const id of p){cons
 if(!best.out.length)return'None of those fit your time window. Try a longer day or fewer landmarks.';let h=`<b>Best route from ${sc}, ${hm(s)} – ${hm(e)}</b><ol class="it">`;
 best.out.forEach(x=>h+=`<li><b>${x.l.n}</b><br>Travel ${Math.round(x.d)} km (${Math.round(x.tr)} min${x.d>350?', flight recommended':''}), arrive ${hm(x.arr)}${x.w>1?`, wait for opening at ${hm(x.l.o)}`:''}.<br>Visit ${hm(x.st)} – ${hm(x.end)}</li>`);h+='</ol>';best.skip.forEach(([l,r])=>h+=`<div class="sub">Skipped ${l.n}: ${r}.</div>`);return h+`<div class="sub">Finish around ${hm(best.at)}. Most landmarks within opening hours, then earliest finish.</div>`}
 function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';setTimeout(()=>e.style.display='none',1800)}
-document.addEventListener('click',e=>{const t=e.target.closest('[data-t],[data-f],[data-d],[data-id],[data-back],[data-post],[data-plan],[data-save]');if(e.target.closest('#zi')){zoom=Math.min(1.7,Math.round((zoom+.3)*100)/100);drawMap();return}if(e.target.closest('#zo')){zoom=Math.max(zmin(),Math.round((zoom-.3)*100)/100);drawMap();return}if(e.target.closest('#loc')){zoom=1;drawMap();toast('Centered on Egypt (demo location)');return}if(e.target.closest('#prof')){det=null;tab='prof';show();return}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-t],[data-f],[data-d],[data-id],[data-back],[data-post],[data-plan],[data-save]');if(e.target.closest('#zi')){zoom=Math.min(1.7,Math.round((zoom+.3)*100)/100);drawMap();return}if(e.target.closest('#zo')){zoom=Math.max(.5,Math.round((zoom-.3)*100)/100);drawMap();return}if(e.target.closest('#loc')){zoom=1;drawMap();toast('Centered on Egypt (demo location)');return}if(e.target.closest('#prof')){det=null;tab='prof';show();return}
 if(!e.target.closest('#res')&&!e.target.closest('.search'))$('#res').style.display='none';if(!t)return;const d=t.dataset;
 if(d.t){tab=d.t;det=null;show()}else if(d.f){flt=d.f;chips();drawMap()}else if(d.id){if(sel===d.id)det=d.id,show();else pick(d.id)}else if(d.d){det=d.d;show()}else if(d.back){det=null;show()}
 else if(d.plan){window._pre=L.find(x=>x.id===d.plan).n+' from 9am to 5pm';det=null;tab='ai';show()}else if(d.save){const i=saved.indexOf(d.save);i<0?saved.push(d.save):saved.splice(i,1);try{localStorage.setItem('sv',JSON.stringify(saved))}catch(x){}show()}
 else if(d.post){const l=L.find(x=>x.id===d.post),c=$('#fc').value.trim();if(!c)return;l.fb.unshift([$('#fn').value.trim()||'Guest',+$('#fr').value,c]);show()}});
 $('#q').addEventListener('input',e=>{const v=e.target.value.trim().toLowerCase(),r=$('#res'),m=v?L.filter(l=>l.n.toLowerCase().includes(v)):[];r.innerHTML=m.map(l=>`<div data-s="${l.id}">${l.n}<div class="sub">${l.city}</div></div>`).join('');r.style.display=m.length?'block':'none'});
 $('#res').addEventListener('click',e=>{const d=e.target.closest('[data-s]');if(d){pick(d.dataset.s);$('#res').style.display='none';$('#q').value=''}});
-
-function zmin(){return 1}
-['l','r'].forEach(k=>{const d=document.createElement('div');d.className='vap '+k;$('#layer').append(d)});
+(function(){const lay=$('#layer'),im=lay.querySelector('img'),ext=document.createElement('div');ext.className='ext';for(let y=-1;y<=1;y++)for(let x=-1;x<=1;x++){const t=document.createElement('img');t.src=im.src;t.alt='';t.style.cssText=`left:${x*100}%;top:${y*100}%;transform:scale(${x?-1:1},${y?-1:1})`;ext.append(t)}lay.prepend(ext)})();
 chips();drawMap();card();show();
 </script></body></html>
